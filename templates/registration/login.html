@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+
+<h1 class="main-title">Login</h1>
+
+{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<div class="main-form">
+  <form method="post" action="{% url 'login' %}" class="form-log">
+    {% csrf_token %}
+    {{ form.username.label_tag }} {{ form.username }}
+    <br>
+    {{ form.password.label_tag }} {{ form.password }}
+    <br>
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+<p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+
+
+{% endblock %}

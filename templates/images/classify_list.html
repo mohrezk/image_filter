@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+
+<form method="POST" id="filterForm">
+    {% csrf_token %}
+
+<h1 class="main-title">Your Images</h1>
+<div class="main-upload">
+    
+    <div class='add-filter'>
+
+
+        
+        <button class="btn btn-success" type="button" hx-trigger="click" hx-post="{% url 'classify_images'%}" hx-target="#classifiedImages" >Classify</button>
+    </div>
+</div>
+
+
+
+<div class="main-process-container">
+
+
+    {% if images %}
+        <div class="imgs-before">
+            <h1 class="box-title">Images</h1>
+            <ul>
+                {% for image in images %}
+                    {% if not image.processed %}
+                        <li class="box-li">
+                            <input type="checkbox" name="selectedImages" value="{{ image.pk }}">
+                            <a href="{% url 'image_detail' pk=image.pk %}">
+                                <img src="{{ image.image.url }}" alt="{{ image.user.username }} - {{ image.uploaded_at }}" width="200" height="200">
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="imgs-after">
+            <h1 class="box-title">Classifications</h1>
+            <ul>
+                <div id="classifiedImages" ></div>
+            </ul>
+        </div>
+    {% else %}
+        <p>No images available.</p>
+    {% endif %}
+</div>
+
+
+</form>
+
+
+
+{% endblock %}

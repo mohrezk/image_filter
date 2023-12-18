@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+
+<form method="POST" id="filterForm">
+    {% csrf_token %}
+
+<h1 class="main-title">Your Images</h1>
+<div class="main-upload">
+    <a href="{% url 'image_create' %}" class="upload"><span class="hand">=> </span>Upload Photo</a>
+    <div class='add-filter'>
+
+        <select id="imageProcessing" name="imageProcessing" class="select-filter">
+            {% comment %} <option value="Crop">CROP</option>
+            <option value="Resize">Resize</option> {% endcomment %}
+            <option value="Gray">Gray</option>
+            <option value="Brightness">Brightness</option>
+            <option value="Lofi">Lofi</option>
+            <option value="1977">1977</option>
+            <option value="Aden">Aden</option>
+        </select>
+        <button class="btn btn-success" type="button" hx-trigger="click" hx-post="{% url 'apply_filter_on_selected'%}" hx-swap="outerHTML" >Apply Filter</button>
+    </div>
+</div>
+
+
+
+<div class="main-process-container">
+    {% comment %} {% if images %}
+    <ul>
+        {% for image in images %}
+            {% if not image.processed %}
+                <li>
+                    <input type="checkbox" name="selectedImages" value="{{ image.pk }}">
+                    <a href="{% url 'image_detail' pk=image.pk %}">
+                        <img src="{{ image.image.url }}" alt="{{ image.user.username }} - {{ image.uploaded_at }}" width="200" height="200">
+                    </a>
+                </li>
+            {% else %}
+            <h1>Processed Images</h1>
+                <li>
+                    <input type="checkbox" name="selectedImages" value="{{ image.pk }}">
+                    <a href="{% url 'image_detail' pk=image.pk %}">
+                        <img src="{{ image.image.url }}" alt="{{ image.user.username }} - {{ image.uploaded_at }}" width="200" height="200">
+                    </a>
+                </li>
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No images available.</p>
+{% endif %} {% endcomment %}
+
+    {% if images %}
+        <div class="imgs-before">
+            <h1 class="box-title">Images</h1>
+            <ul>
+                {% for image in images %}
+                    {% if not image.processed %}
+                        <li class="box-li">
+                            <input type="checkbox" name="selectedImages" value="{{ image.pk }}">
+                            <a href="{% url 'image_detail' pk=image.pk %}">
+                                <img src="{{ image.image.url }}" alt="{{ image.user.username }} - {{ image.uploaded_at }}" width="200" height="200">
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="imgs-after">
+            <h1 class="box-title">Processed Images</h1>
+            <ul>
+                {% for image in images %}
+                    {% if image.processed %}
+                        <li class="box-li">
+                            <input type="checkbox" name="selectedImages" value="{{ image.pk }}">
+                            <a href="{% url 'image_detail' pk=image.pk %}">
+                                <img src="{{ image.image.url }}" alt="{{ image.user.username }} - {{ image.uploaded_at }}" width="200" height="200">
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <p>No images available.</p>
+    {% endif %}
+</div>
+
+
+</form>
+
+<div id="filteredImages" hx-target="#filteredImages"></div>
+
+{% endblock %}

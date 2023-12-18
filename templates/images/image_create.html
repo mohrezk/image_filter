@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+
+<h1 class="main-title">Create Image</h1>
+
+<form method="post" enctype="multipart/form-data" class="chose-form">
+    {% csrf_token %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+    {% for f in form %}
+        {{f}}
+    {% endfor %}
+    <button class="btn btn-danger" type="submit">Upload Image</button>
+</form>
+
+<a href="{% url 'list_images' %}" class="back">Back to Image List</a>
+
+</body>
+</html>
+
+
+
+{% endblock %}
