@@ -2,39 +2,44 @@
 {% load static%}
 {% block content %}
 
-<form method="POST" >
-{% csrf_token %}
-<h1 class="main-title">Image Detail</h1>
-
-
-<!-- <p><strong>User:</strong> {{ image.user.username }}</p> -->
-
-<select id="imageProcessing" name="imageProcessing">
-    {% comment %} <option value="Crop">CROP</option>
-    <option value="Resize">Resize</option> {% endcomment %}
-    <option value="Gray">Gray</option>
-    <option value="Brightness">Brightness</option>
-    <option value="Lofi">Lofi</option>
-    <option value="1977">1977</option>
-    <option value="Aden">Aden</option>
-</select>
-
-<button id="applyFilter" hx-post="{% url 'apply_filter' image.id %}" hx-target="#filteredImage">Apply Filter</button>
-
-<button id="applyFilter" hx-post="{% url 'classify_image' image.id %}" hx-target="#filteredImage">Classify</button>
-
-<div class="tow-other">
-    <div class="befoe-filter">
-        <img src="{{ image.image.url }}" alt="{{ image.user.username }} - {{ image.uploaded_at }}">
+<div class="details-container" > 
+    <form method="POST" >
+        {% csrf_token %}
+        <h1 class="main-title">Image Detail</h1>
+        
+        
+        <!-- <p><strong>User:</strong> {{ image.user.username }}</p> -->
+        
+        <div class="detail-btns">
+            <select id="imageProcessing" name="imageProcessing">
+                {% comment %} <option value="Crop">CROP</option>
+                <option value="Resize">Resize</option> {% endcomment %}
+                <option value="Gray">Gray</option>
+                <option value="Brightness">Brightness</option>
+                <option value="Lofi">Lofi</option>
+                <option value="1977">1977</option>
+                <option value="Aden">Aden</option>
+            </select>
+            
+            <button id="applyFilter" hx-post="{% url 'apply_filter' image.id %}" hx-target="#filteredImage">Apply Filter</button>
+            
+            <button id="applyFilter" hx-post="{% url 'classify_image' image.id %}" hx-target="#filteredImage">Classify</button>    
+        </div>
+        <div class="tow-other">
+            <div class="befoe-filter">
+                <img src="{{ image.image.url }}" alt="{{ image.user.username }} - {{ image.uploaded_at }}">
+            </div>
+            <div id="filteredImage"></div>
+        </div>
+        
+        
+        
+    </form>
+    
+    <div class="end">
+        <p><strong>Uploaded At:</strong> {{ image.uploaded_at }}</p>
+        <a href="{% url 'list_images' %}">Back to Image List</a>
     </div>
-    <div id="filteredImage"></div>
 </div>
-
-<p><strong>Uploaded At:</strong> {{ image.uploaded_at }}</p>
-
-<a href="{% url 'list_images' %}">Back to Image List</a>
-
-</form>
-
 
 {% endblock %}

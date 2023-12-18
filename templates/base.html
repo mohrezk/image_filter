@@ -88,7 +88,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 11px;
+            gap: 18px;
             margin-bottom: 50px;
         }
         .add-filter {
@@ -97,7 +97,8 @@
             align-items: center;
             gap: 8px;
         }
-        .add-filter .select-filter{
+        .add-filter .select-filter,
+        .detail-btns select{
             padding: 10px;
             border: 1.5px solid #999;
             border-radius: 8px;
@@ -206,12 +207,11 @@
         .tow-other {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
         margin-top: 20px;
         }
     
-        .befoe-filter,
-        #filteredImage {
+        .befoe-filter {
         max-width: 45%; /* Adjust as needed */
         height: auto;
         border: 1px solid #ddd;
@@ -219,13 +219,15 @@
         padding: 10px;
         box-sizing: border-box; /* Ensure padding is included in the width */
         }
+        #filteredImage {
+        max-width: 45%; /* Adjust as needed */
+        height: auto;
+        box-sizing: border-box; /* Ensure padding is included in the width */
+        }
         .befoe-filter img,
         #filteredImage img{
             width: 100%;
             height: auto;
-        }
-        #filteredImage {
-        background-color: #f8f9fa; /* Add background color for the filtered image container */
         }
         #applyFilter {
             border: none;
@@ -347,7 +349,6 @@
 
         .imageResult{
             width: 100%;
-            height: 350px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -355,20 +356,63 @@
             font-weight: bold;
             flex-direction: column;
             gap: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px
         
         }
 
         .main-process-container img{
             width: 100%;
-            height: 300px;
-            object-fit: cover;
         }
 
-        .main-process-container .box-li{
-            height: 350px;
-
+        .add-filter button {
+            height: 45px;
+            border-radius: 7px;
+            margin: 0 !important;
         }
-        
+        .add-filter select {
+            margin: 0 !important;
+        }
+        .detail-btns {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .details-container {
+            min-height: calc(100vh - 112px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px 0 46px 0;
+            gap: 100px;
+        }
+        .ul-features {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 0;
+            gap: 15px;
+            border: 1px solid #ddd;
+            padding: 10px !important;
+            border-radius: 10px;
+        }
+        .ul-features li {
+            font-weight: bold;
+            font-size: 17px;
+        }
+        #filteredImage > img {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        .imageResult-view {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 38px;
+        }
     </style>
 
 </head>

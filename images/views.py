@@ -115,7 +115,7 @@ class ClassifyImageView(View):
 
         result = classify.classify_image(img)
 
-        responseHTML = "<div class='imageResult'>" + " ".join(result) + f"<img src='/media/{folder}/{os.path.basename(img)}'>" +  "</div>"
+        responseHTML =  f"<ul class='ul-features'>{' - '.join([f'<li>{value}</li>' for value in result])}</ul>" + "<div class='imageResult'>"  f"<img src='/media/{folder}/{os.path.basename(img)}'>" +  "</div>"
         if result:
             return HttpResponse(responseHTML)
         return  HttpResponse(f'<h1>No Data</h1>')
@@ -147,14 +147,14 @@ class ClassifySelectedImagesView(View):
         j = 0
         responseHTML = ""
         for i in result:
-            div = "<div class='imageResult'>"
+            div = "<div class='imageResult-view'>"
 
             # for j in i:
             #     r = f"<div class='result'>{j} </div>"
             #     div += r
 
-            div += f"<div class='result'>{i[0]} </div>"
-            div += f"<img src='/media/{folder}/{os.path.basename(images[j])}'>"
+            div += f"<ul class='ul-features'>{' - '.join([f'<li>{value}</li>' for value in i])}</ul>"
+            div += f"<img class='img-view' src='/media/{folder}/{os.path.basename(images[j])}'>"
             j += 1
             div += "</div>"
             responseHTML += div
