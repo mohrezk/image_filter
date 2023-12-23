@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ImageListView, ImageCreateView, ImageDetailView, ApplyFilterView, ApplyFilterOnSelectedView, ClassifyImageView, ImageListClassifyView, ClassifySelectedImagesView
+from .views import ImageListView, ImageCreateView, ImageDetailView, ApplyFilterView, ApplyFilterOnSelectedView, ClassifyImageView, ImageListClassifyView, ClassifySelectedImagesView ,HomePageView
 
 urlpatterns = [
     path('', ImageListView.as_view(), name="list_images"),
@@ -10,5 +10,6 @@ urlpatterns = [
     
     path('classify/', ImageListClassifyView.as_view(), name="classify_list"),
     path('classify_image/<int:id>', ClassifyImageView.as_view(), name="classify_image"),
-    path('classify_images/', ClassifySelectedImagesView.as_view(), name="classify_images")
+    path('classify_images/', ClassifySelectedImagesView.as_view(), name="classify_images"),
+    path("home", HomePageView.as_view(), name="home"),
 ]

@@ -9,7 +9,12 @@ from .process_image import Process
 from .classify_image import Classify
 import os 
 from random import randint
+from django.views.generic import TemplateView
 
+
+class HomePageView(TemplateView):
+    template_name = "home.html"
+    
 class ImageListView(LoginRequiredMixin, ListView):
     model = Image
     template_name = 'images/image_list.html'
