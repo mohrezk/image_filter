@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing Platform</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+
+        #startButton {
+            text-decoration: none;
+
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-dark text-white text-center py-5">
+        <h1>Image Processing Platform</h1>
+        <p>Welcome to the future of image processing!</p>
+    </header>
+
+    <section class="container my-5">
+        <h2>About the Project</h2>
+        <p>
+            Our Image Processing Platform is a user-friendly web application that combines the power of advanced image processing
+            with the simplicity of a sleek and intuitive interface. Whether you're an amateur photographer, a creative designer,
+            or just someone who loves playing with images, this platform is designed for you.
+        </p>
+        <p>
+            The heart of our platform lies in its ability to enhance your images through parallel processing. This means you can
+            apply multiple filters simultaneously, giving your images a unique and artistic touch. Additionally, our platform
+            goes beyond basic image editing by incorporating machine learning for image classification. This allows you to gain
+            insights into the content of your images, adding a new dimension to your exploration.
+        </p>
+        <p>
+            We understand the importance of simplicity, and that's why we've made the entire process from uploading to processing
+            as easy as possible. You don't need to be a tech wizard to make the most out of your images – our platform is here to
+            make image processing accessible to everyone.
+        </p>
+    </section>
+    
+
+    <section class="container my-5">
+        <h2>Key Features</h2>
+        <ul class="list-group">
+            <li class="list-group-item"> <strong>Image Upload:</strong> Easily upload high-resolution images from your computer or smartphone.</li>
+            <li class="list-group-item"> <strong>Parallel Processing:</strong> Harness the power of parallel processing to apply multiple filters simultaneously.</li>
+            <li class="list-group-item"> <strong>Image Classification:</strong> Utilizing advanced machine learning models, our platform provides accurate image classification.</li>
+        </ul>
+    </section>
+
+    <section class="container my-5">
+        <h2>How It Works</h2>
+        <p>
+            Getting started is a breeze! Select the images you want to enhance, explore filters, and take advantage
+            of our machine learning capabilities to classify the content of your images. It's that simple!
+        </p>
+    </section>
+
+    <section class="container my-5">
+        <h2>Technologies Used</h2>
+        <p>
+            Our platform is built on a robust stack of web technologies:
+        </p>
+        <ul class="list-group">
+            <li class="list-group-item"> <strong>Frontend:</strong> HTML, CSS, Bootstrap and JS for a responsive and interactive user interface. HTMX for seamless server-side interactions.</li>
+            <li class="list-group-item"> <strong>Backend:</strong> Python and Django for a scalable and maintainable backend infrastructure. SQLite database for efficient data storage and retrieval.</li>
+        </ul>
+    </section>
+
+    <section class="container my-5">
+        <h2>Get Started</h2>
+        <p>
+            Ready to see your images in a new light? Click the button below to embark on your image processing journey now!
+        </p>
+        <button id="startButton" class="btn"><a href="{% url 'list_images'%}">Start Image Processing</a></button>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>
+            &copy; 2023 Image Processing Platform. All rights reserved.
+        </p>
+        <p>
+            For inquiries or support, please contact us at <a href="mailto:contact@imageprocessingplatform.com">contact@imageprocessingplatform.com</a>.
+        </p>
+        <p>
+            Follow us on <a href="#" class="text-white">Twitter</a> and <a href="#" class="text-white">Instagram</a> for updates and inspiration.
+        </p>
+    </footer>
+
+    <!-- Add Bootstrap JS and other footer elements here -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
